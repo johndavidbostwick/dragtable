@@ -107,6 +107,7 @@
 				
                	//console.log( 'offsetLeft',offsetLeft, ' e.x',e.pageX );
                 
+        console.log('top', el[0].offsetTop, 'left', offsetLeft+e.pageX );
 				$dragDisplay
 					.attr( 'tabindex', -1 )
 	                .focus()
@@ -115,7 +116,7 @@
 	                    top: el[0].offsetTop,
 	                   //using the parentOff.set makes e.pageX reletive to the parent element. This fixes the issue of the drag display not showing up under cursor on drag.
 	                    //left: ((e.pageX - parentOffset.x) + (parseInt('-' + half)))
-	                    left: offsetLeft
+	                    left: offsetLeft+e.pageX
 					})
 	                .insertAfter( self.element )
 				
@@ -152,7 +153,7 @@
                     var columnPos = self._findElementPosition(self.currentColumnCollection[0]),
 						colHalfWidth = Math.floor( self.currentColumnCollection[0].clientWidth / 2 );
                     
-                    
+                    console.log(e);
                     //console.log( $dragDisplay.css('left'),'e.pageX ',e.pageX,'postion offset ', self._positionOffset, 'colpos.x ', columnPos.x)
                     
                     //console.log( 'half width colHalfWidth ', colHalfWidth)
@@ -237,7 +238,6 @@
 				tdsSemanticBody = tds.semantic[ei.body],
 				tdsSemanticHead = tds.semantic[ei.head];
 			
-			//console.log(index);
 			//check does this col exsist
 			if(index <= -1 || typeof elem.rows[0].cells[index] == undefined){
 				return tds;
